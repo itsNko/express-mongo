@@ -1,6 +1,6 @@
 const express = require('express');
 const mongojs = require('mongojs')
-const db = mongojs('mongodb://127.0.0.1:29000/test', ['inventory'])
+const db = mongojs('mongodb://127.0.0.1:27017/test', ['inventory'])
 const app = express();
 const port = 3000;
 
@@ -19,7 +19,7 @@ let remove = function(res, id){
         if (err) {
             res.send(err);
         } else {
-            res.send(result);
+            res.redirect('/inventory')
         }
     });
 }
@@ -80,6 +80,27 @@ app.post('/edit/:id', (req, res) => {
                 res.redirect('/inventory')
             }
         })
+})
+
+app.get('/create', (req, res) => {
+    res.render('create')
+})
+
+app.post('/create', (req, res) => {
+    db.inventory.insert(
+        {
+            "item": req.body.item,
+            "qty": parseInt(req.body.qty),
+            "size": JSON.parse(req.body.size),
+            "status": req.body.status
+        },
+        (err, result) => {
+            if (err) {
+                res.send(err);
+            } else {
+                res.redirect('/inventory')
+            }
+    });
 })
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))

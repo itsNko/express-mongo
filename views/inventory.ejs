@@ -20,7 +20,12 @@
             <td> <%= element.qty %></td>
             <td> <%= JSON.stringify(element.size) %></td>
             <td> <%= element.status %></td>
-            <td> <a href="./edit/<%= element._id %>">Edit</a></td>
+            <td>
+                <a href="./edit/<%= element._id %>">Edit</a>
+                <a href="./inventory/delete/<%= element._id %>">Delete</a>
+            </td>
         </tr>
     <% }) %>
 </table>
+<br>
+<a href="../create"><button>Add Item</button></a>
