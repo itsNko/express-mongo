@@ -17,6 +17,7 @@
     <% elements.forEach( element => { %>
         <tr>
             <td> <%= element.item %></td>
+            <td><img style="width:10em"src="/img/<%=element.img%>"></td>
             <td> <%= element.qty %></td>
             <td> <%= JSON.stringify(element.size) %></td>
             <td> <%= element.status %></td>

@@ -1,6 +1,6 @@
 <div id="main">
 
-<form action="./<%=element._id%>" method="post">
+<form action="./<%=element._id%>" method="post" enctype="multipart/form-data">>
         <label for="name">Name</label>
         <input type="text" id="item" name="item" value="<%=element.item%>">
         <label for="name">Qty</label>
@@ -9,7 +9,8 @@
         <input type="text" id="status" name="status" value="<%=element.status%>">
         <label for="name">Size</label>
         <input type="text" id="size" name="size" value="<%=JSON.stringify(element.size)%>" size="30">
-
+        <label for="avatar">Image</label>
+        <input type="file" name="avatar">
 
         <input type="submit" class="form-submit" value="Edit">
 </form>
